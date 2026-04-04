@@ -3,168 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmanuel BAKAKA | Cybersecurity Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>E. BAKAKA | Stealth Cyber Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@300;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d1117; --card: #161b22; --border: #30363d;
-            --text: #c9d1d9; --accent: #238636; --blue: #58a6ff;
+            --bg: #050505; --card: rgba(17, 24, 39, 0.7); --border: rgba(255, 255, 255, 0.1);
+            --text: #94a3b8; --white: #f8fafc; --accent: #10b981;
+            --blue: #3b82f6; --neon: #3b82f6;
         }
+
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        
         body {
             background-color: var(--bg); color: var(--text);
-            font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6;
+            font-family: 'Plus Jakarta Sans', sans-serif; margin: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+
+        /* Navigation / Header */
+        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; }
+        .logo { font-family: 'Fira Code', monospace; font-weight: 800; color: var(--white); font-size: 1.2rem; }
+        .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 10px var(--accent); }
+
+        /* Hero Section */
+        .hero { margin-bottom: 60px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; color: var(--white); font-weight: 800; letter-spacing: -3px; line-height: 0.9; }
+        .gradient-text { background: linear-gradient(to right, var(--white), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Bento Grid */
+        .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card { 
+            background: var(--card); border: 1px solid var(--border); border-radius: 24px; 
+            padding: 30px; backdrop-filter: blur(12px); position: relative;
+        }
+        .card:hover { border-color: var(--blue); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         
-        /* Header & Bio */
-        header { border-bottom: 1px solid var(--border); padding-bottom: 40px; margin-bottom: 40px; }
-        h1 { font-size: 3rem; margin: 0; color: white; font-weight: 900; }
-        .badge { background: var(--accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .large { grid-column: span 2; }
+        .tall { grid-row: span 2; }
+
+        @media (max-width: 900px) { .bento { grid-template-columns: 1fr; } .large { grid-column: span 1; } }
+
+        /* Cyber Terminal */
+        .terminal { background: #000; border-radius: 16px; padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.85rem; border: 1px solid var(--border); }
+        .line { margin-bottom: 8px; }
+        .cmd { color: var(--blue); }
+        .res { color: var(--accent); }
+
+        /* Timeline Items */
+        .timeline-item { border-left: 2px solid var(--border); padding: 0 0 25px 20px; position: relative; }
+        .timeline-item::after { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--bg); border: 2px solid var(--blue); border-radius: 50%; }
+
+        /* Badges */
+        .badge-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .badge { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: var(--blue); padding: 6px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; }
         
-        /* Grid System */
-        .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
-        h2 { color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-
-        /* Terminal Style for SQL */
-        .terminal {
-            background: #000; border-radius: 8px; padding: 15px;
-            font-family: 'Fira Code', monospace; font-size: 0.9rem;
-            border-left: 4px solid var(--accent); position: relative;
-        }
-        .terminal::before { content: "SQL QUERY"; position: absolute; top: -10px; right: 10px; font-size: 0.7rem; color: var(--gray); background: var(--bg); padding: 0 5px; }
-        .keyword { color: #ff7b72; }
-        .string { color: #a5d6ff; }
-
-        /* Interactive Tabs */
-        .tab-buttons { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        button { 
-            background: transparent; border: 1px solid var(--border); color: var(--text);
-            padding: 8px 15px; border-radius: 6px; cursor: pointer; transition: 0.3s;
-        }
-        button.active { background: var(--blue); color: white; border-color: var(--blue); }
-
-        /* Status Checkmarks */
-        .status-list { list-style: none; padding: 0; }
-        .status-list li::before { content: "▹ "; color: var(--blue); }
-        .done { color: var(--accent); font-weight: bold; }
+        .btn-action { background: var(--white); color: var(--bg); border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>Emmanuel BAKAKA <span class="badge">L2 Cybersécurité</span></h1>
-        <p>🛡️ Analyste en sécurité | Objectif : <strong>CyberSup Paris</strong></p>
-        <div style="margin-top: 15px;">
-            <a href="https://www.linkedin.com/in/emmanuel-bakaka-4805a125a/" style="color: var(--blue);">LinkedIn</a> • 
-            <span>Dakar, Sénégal (Mobilité France 2026)</span>
-        </div>
+    <nav>
+        <div class="logo">E.BAKAKA // CYBER_DEPT</div>
+        <div style="font-size: 0.8rem; font-weight: 700;"><span class="status-dot"></span>AVAILABLE FOR MISSIONS</div>
+    </nav>
+
+    <header class="hero">
+        <h1>Emmanuel <span class="gradient-text">Bakaka</span></h1>
+        <p style="font-size: 1.2rem; max-width: 600px; margin-top: 20px;">
+            Futur ingénieur à <strong style="color: var(--white);">CyberSup Paris</strong>. Spécialisé en investigation SQL, Pentesting et automatisation de la sécurité.
+        </p>
     </header>
 
-    <div class="grid">
-        <main>
-            <section class="card">
-                <h2>🔍 Analyse SQL Interactive</h2>
-                <p>En tant qu'analyste, j'enquête sur des incidents via SQL pour identifier des menaces. Cliquez sur les filtres ci-dessous pour voir mes méthodes d'investigation :</p>
-                
-                <div class="tab-buttons">
-                    <button onclick="showSql('after-hours')" id="btn-after-hours" class="active">Échecs après 18h</button>
-                    <button onclick="showSql('geo-filter')">Filtrage Hors-Mexique</button>
-                    <button onclick="showSql('marketing')">Ciblage Marketing (Est)</button>
-                </div>
-
-                <div id="sql-display" class="terminal">
-                    <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> log_in_attempts <br>
-                    <span class="keyword">WHERE</span> login_time > <span class="string">'18:00:00'</span> <span class="keyword">AND</span> success = 0;
-                </div>
-                <p id="sql-logic" style="font-size: 0.9rem; margin-top: 15px; color: var(--accent);">
-                    Logic: Identifie les échecs de connexion suspects hors horaires de bureau.
-                </p>
-            </section>
-
-            <section class="card">
-                <h2>🚀 Projets Techniques</h2>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr style="text-align: left; border-bottom: 1px solid var(--border);">
-                        <th style="padding: 10px;">Projet</th>
-                        <th>Outils</th>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px;">Gestion des Permissions Linux</td>
-                        <td><span class="badge" style="background:#444;">Bash, Chmod</span></td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px;">Analyse de Trafic Réseau</td>
-                        <td><span class="badge" style="background:#444;">Wireshark, Nmap</span></td>
-                    </tr>
-                </table>
-            </section>
-        </main>
-
-        <aside>
-            <section class="card">
-                <h2>📜 Certifications</h2>
-                <ul class="status-list">
-                    <li class="done">Google Cybersecurity</li>
-                    <li>CompTIA Security+ (Fév. 2027)</li>
-                    <li>CompTIA PenTest+ (Fin 2027)</li>
-                </ul>
-            </section>
-            <section class="card">
-    <h2>🏆 Palmarès Certifications</h2>
-    <div style="font-size: 0.85rem;">
-        <p><strong>Top Skills:</strong> Pentesting, Risk Analysis, Network Security, GenAI Analytics</p>
-        <div class="status-list">
-            <li class="done">Ethical Hacking (LearnKartS)</li>
-            <li class="done">Google Tools (Linux/SQL)</li>
-            <li class="done">Cisco Network Security</li>
-            <li class="done">ISC2 Candidate (2025-2026)</li>
+    <div class="bento">
+        <div class="card large">
+            <h2 style="color: var(--white); margin-top: 0;">🔍 Forensic Command Center</h2>
+            <div class="terminal">
+                <div class="line"><span class="cmd">user@cyber_box:~$</span> run forensic_audit.sql</div>
+                <div class="line" id="typing-text" style="min-height: 60px;"></div>
+                <div class="line" style="color: #444;">// Logs isolés: 12 tentatives suspectes détectées.</div>
+            </div>
+            <div class="badge-grid">
+                <button class="btn-action" onclick="typeQuery('brute_force')">Audit Brute Force</button>
+                <button class="btn-action" style="background:transparent; border: 1px solid var(--border); color: var(--white);" onclick="typeQuery('geo')">Audit Géographique</button>
+            </div>
         </div>
-        <hr style="border: 0.5px solid var(--border); margin: 15px 0;">
-        <p><small>📌 <strong>Simulations pro complétées:</strong> JPMorgan, Mastercard, Deloitte, Tata Group</small></p>
-    </div>
-</section>
 
-            <section class="card">
-                <h2>🛠️ Toolbox</h2>
-                <p><strong>OS:</strong> Kali Linux, Ubuntu</p>
-                <p><strong>Dev:</strong> Python, SQL, React/Next.js</p>
-                <p><strong>Sport:</strong> Taekwondo 🟦 (Blue Belt)</p>
-            </aside>
+        <div class="card tall">
+            <h3 style="color: var(--white);">🛠️ Technical Stack</h3>
+            <p><small>Expertise système & réseau</small></p>
+            <div class="badge-grid">
+                <span class="badge">Kali Linux</span> <span class="badge">Wireshark</span>
+                <span class="badge">Metasploit</span> <span class="badge">Nmap</span>
+                <span class="badge">SQL Injection</span> <span class="badge">Python</span>
+                <span class="badge">Next.js</span> <span class="badge">Docker</span>
+            </div>
+            <div style="margin-top: 40px;">
+                <h3 style="color: var(--white);">🥋 Martial Arts</h3>
+                <span class="badge" style="color: #3b82f6;">Taekwondo Blue Belt 🟦</span>
+            </div>
+        </div>
+
+        <div class="card large">
+            <h3 style="color: var(--white); margin-top: 0;">📜 Certification Roadmap</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="timeline-item">
+                    <div style="font-size: 0.7rem; color: var(--blue);">MARS 2026</div>
+                    <div style="color: var(--white); font-weight: 700;">Google Security Professional</div>
+                    <small>Linux & SQL Tools Mastery</small>
+                </div>
+                <div class="timeline-item">
+                    <div style="font-size: 0.7rem; color: var(--blue);">JUILLET 2025</div>
+                    <div style="color: var(--white); font-weight: 700;">Ethical Hacking (LearnKartS)</div>
+                    <small>Pentesting & Risk Analysis</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--white); margin-top: 0;">🚀 Simulations</h3>
+            <p><small>Expérience en environnement réel</small></p>
+            <ul style="padding: 0; list-style: none; font-size: 0.85rem;">
+                <li style="margin-bottom: 10px;">▹ <strong>JPMorgan:</strong> Software Sec</li>
+                <li style="margin-bottom: 10px;">▹ <strong>Mastercard:</strong> Cyber Analyst</li>
+                <li>▹ <strong>Deloitte:</strong> Incident Response</li>
+            </ul>
         </div>
     </div>
 
-    <footer style="text-align: center; margin-top: 50px; font-size: 0.8rem; color: var(--gray);">
-        Dernière mise à jour : Mars 2026 | Portfolio interactif d'Emmanuel BAKAKA
+    <footer style="margin-top: 80px; text-align: center; font-family: 'Fira Code', monospace; font-size: 0.7rem; opacity: 0.5;">
+        [ ENCRYPTION ENABLED ] - LAST_SYNC: 04-APR-2026
     </footer>
 </div>
 
 <script>
     const queries = {
-        'after-hours': {
-            sql: "<span class='keyword'>SELECT</span> * <span class='keyword'>FROM</span> log_in_attempts <br><span class='keyword'>WHERE</span> login_time > <span class='string'>'18:00:00'</span> <span class='keyword'>AND</span> success = 0;",
-            logic: "Logic: Identifie les échecs de connexion suspects après les heures de bureau."
-        },
-        'geo-filter': {
-            sql: "<span class='keyword'>SELECT</span> * <span class='keyword'>FROM</span> log_in_attempts <br><span class='keyword'>WHERE NOT</span> country <span class='keyword'>LIKE</span> <span class='string'>'MEX%'</span>;",
-            logic: "Logic: Isole les connexions étrangères en excluant précisément le Mexique."
-        },
-        'marketing': {
-            sql: "<span class='keyword'>SELECT</span> * <span class='keyword'>FROM</span> employees <br><span class='keyword'>WHERE</span> department = <span class='string'>'Marketing'</span> <span class='keyword'>AND</span> office <span class='keyword'>LIKE</span> <span class='string'>'East%'</span>;",
-            logic: "Logic: Cible les actifs du département Marketing situés dans le bâtiment Est."
-        }
+        brute_force: "SELECT * FROM log_in_attempts WHERE login_time > '18:00:00' AND success = 0;",
+        geo: "SELECT * FROM log_in_attempts WHERE NOT country LIKE 'MEX%';"
     };
 
-    function showSql(key) {
-        document.getElementById('sql-display').innerHTML = queries[key].sql;
-        document.getElementById('sql-logic').innerText = queries[key].logic;
+    function typeQuery(key) {
+        const text = queries[key];
+        const container = document.getElementById('typing-text');
+        container.innerHTML = "";
+        let i = 0;
         
-        document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        function type() {
+            if (i < text.length) {
+                container.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 30);
+            }
+        }
+        type();
     }
+
+    // Initial type
+    window.onload = () => typeQuery('brute_force');
 </script>
 
 </body>
