@@ -3,168 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E. BAKAKA | Stealth Cyber Portfolio</title>
+    <title>E. BAKAKA | Cybersecurity Expert Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@300;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505; --card: rgba(17, 24, 39, 0.7); --border: rgba(255, 255, 255, 0.1);
-            --text: #94a3b8; --white: #f8fafc; --accent: #10b981;
-            --blue: #3b82f6; --neon: #3b82f6;
+            --bg: #020617; --card: rgba(15, 23, 42, 0.8); --border: rgba(51, 65, 85, 0.5);
+            --text: #94a3b8; --white: #f8fafc; --accent: #10b981; --blue: #3b82f6;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        
+        * { box-sizing: border-box; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
         body {
             background-color: var(--bg); color: var(--text);
             font-family: 'Plus Jakarta Sans', sans-serif; margin: 0;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-image: radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.1) 1px, transparent 0);
+            background-size: 40px 40px;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
 
-        /* Navigation / Header */
-        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; }
-        .logo { font-family: 'Fira Code', monospace; font-weight: 800; color: var(--white); font-size: 1.2rem; }
-        .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 10px var(--accent); }
+        /* Header & Identity */
+        header { margin-bottom: 50px; border-left: 5px solid var(--blue); padding-left: 30px; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 0; color: var(--white); font-weight: 800; letter-spacing: -2px; }
+        .tagline { font-family: 'Fira Code', monospace; color: var(--accent); font-size: 1rem; }
 
-        /* Hero Section */
-        .hero { margin-bottom: 60px; }
-        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; color: var(--white); font-weight: 800; letter-spacing: -3px; line-height: 0.9; }
-        .gradient-text { background: linear-gradient(to right, var(--white), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* Bento Grid */
+        /* Bento Grid Layout */
         .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .card { 
-            background: var(--card); border: 1px solid var(--border); border-radius: 24px; 
-            padding: 30px; backdrop-filter: blur(12px); position: relative;
+            background: var(--card); border: 1px solid var(--border); border-radius: 20px; 
+            padding: 30px; backdrop-filter: blur(10px); position: relative;
         }
-        .card:hover { border-color: var(--blue); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        
-        .large { grid-column: span 2; }
-        .tall { grid-row: span 2; }
+        .card:hover { border-color: var(--blue); box-shadow: 0 0 30px rgba(59, 130, 246, 0.1); }
+        .span-2 { grid-column: span 2; }
+        @media (max-width: 900px) { .bento { grid-template-columns: 1fr; } .span-2 { grid-column: span 1; } }
 
-        @media (max-width: 900px) { .bento { grid-template-columns: 1fr; } .large { grid-column: span 1; } }
+        /* Terminal Style */
+        .terminal { background: #000; border-radius: 12px; padding: 20px; font-family: 'Fira Code', monospace; border: 1px solid var(--border); }
+        .cursor { display: inline-block; width: 8px; height: 18px; background: var(--accent); animation: blink 1s infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
 
-        /* Cyber Terminal */
-        .terminal { background: #000; border-radius: 16px; padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.85rem; border: 1px solid var(--border); }
-        .line { margin-bottom: 8px; }
-        .cmd { color: var(--blue); }
-        .res { color: var(--accent); }
+        /* Experience/Cert Tabs */
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { 
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text);
+            padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
+        }
+        .tab-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
 
-        /* Timeline Items */
-        .timeline-item { border-left: 2px solid var(--border); padding: 0 0 25px 20px; position: relative; }
-        .timeline-item::after { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--bg); border: 2px solid var(--blue); border-radius: 50%; }
+        /* Badges & Tech Matrice */
+        .tech-matrix { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tech-pill { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: var(--blue); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
 
-        /* Badges */
-        .badge-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-        .badge { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: var(--blue); padding: 6px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; }
-        
-        .btn-action { background: var(--white); color: var(--bg); border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+        /* Skill List with Progress */
+        .skill-item { margin-bottom: 15px; }
+        .skill-header { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; color: var(--white); }
+        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; }
+        .progress-fill { height: 100%; background: var(--blue); border-radius: 3px; box-shadow: 0 0 10px var(--blue); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <nav>
-        <div class="logo">E.BAKAKA // CYBER_DEPT</div>
-        <div style="font-size: 0.8rem; font-weight: 700;"><span class="status-dot"></span>AVAILABLE FOR MISSIONS</div>
-    </nav>
-
-    <header class="hero">
-        <h1>Emmanuel <span class="gradient-text">Bakaka</span></h1>
-        <p style="font-size: 1.2rem; max-width: 600px; margin-top: 20px;">
-            Futur ingénieur à <strong style="color: var(--white);">CyberSup Paris</strong>. Spécialisé en investigation SQL, Pentesting et automatisation de la sécurité.
-        </p>
+    <header>
+        <h1>Emmanuel Bakaka</h1>
+        <div class="tagline">L2 Cybersecurity Student | Pentester | Full-Stack Dev</div>
+        <p style="max-width: 700px;">Expertise validée par <strong>15+ certifications</strong> et simulations industrielles (JPMorgan, Mastercard, Deloitte). Objectif : <strong>CyberSup Paris</strong>.</p>
     </header>
 
     <div class="bento">
-        <div class="card large">
-            <h2 style="color: var(--white); margin-top: 0;">🔍 Forensic Command Center</h2>
+        <div class="card span-2">
+            <h2 style="color: var(--white); margin-top: 0;">🔍 Forensic Engine v2.0</h2>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="runScan('brute')">Brute Force Audit</button>
+                <button class="tab-btn" onclick="runScan('geo')">Geographical Audit</button>
+                <button class="tab-btn" onclick="runScan('it')">Privilege Audit</button>
+            </div>
             <div class="terminal">
-                <div class="line"><span class="cmd">user@cyber_box:~$</span> run forensic_audit.sql</div>
-                <div class="line" id="typing-text" style="min-height: 60px;"></div>
-                <div class="line" style="color: #444;">// Logs isolés: 12 tentatives suspectes détectées.</div>
-            </div>
-            <div class="badge-grid">
-                <button class="btn-action" onclick="typeQuery('brute_force')">Audit Brute Force</button>
-                <button class="btn-action" style="background:transparent; border: 1px solid var(--border); color: var(--white);" onclick="typeQuery('geo')">Audit Géographique</button>
-            </div>
-        </div>
-
-        <div class="card tall">
-            <h3 style="color: var(--white);">🛠️ Technical Stack</h3>
-            <p><small>Expertise système & réseau</small></p>
-            <div class="badge-grid">
-                <span class="badge">Kali Linux</span> <span class="badge">Wireshark</span>
-                <span class="badge">Metasploit</span> <span class="badge">Nmap</span>
-                <span class="badge">SQL Injection</span> <span class="badge">Python</span>
-                <span class="badge">Next.js</span> <span class="badge">Docker</span>
-            </div>
-            <div style="margin-top: 40px;">
-                <h3 style="color: var(--white);">🥋 Martial Arts</h3>
-                <span class="badge" style="color: #3b82f6;">Taekwondo Blue Belt 🟦</span>
-            </div>
-        </div>
-
-        <div class="card large">
-            <h3 style="color: var(--white); margin-top: 0;">📜 Certification Roadmap</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="timeline-item">
-                    <div style="font-size: 0.7rem; color: var(--blue);">MARS 2026</div>
-                    <div style="color: var(--white); font-weight: 700;">Google Security Professional</div>
-                    <small>Linux & SQL Tools Mastery</small>
-                </div>
-                <div class="timeline-item">
-                    <div style="font-size: 0.7rem; color: var(--blue);">JUILLET 2025</div>
-                    <div style="color: var(--white); font-weight: 700;">Ethical Hacking (LearnKartS)</div>
-                    <small>Pentesting & Risk Analysis</small>
-                </div>
+                <div id="output" style="min-height: 100px; font-size: 0.9rem;"></div>
+                <span class="cursor"></span>
             </div>
         </div>
 
         <div class="card">
-            <h3 style="color: var(--white); margin-top: 0;">🚀 Simulations</h3>
-            <p><small>Expérience en environnement réel</small></p>
-            <ul style="padding: 0; list-style: none; font-size: 0.85rem;">
-                <li style="margin-bottom: 10px;">▹ <strong>JPMorgan:</strong> Software Sec</li>
-                <li style="margin-bottom: 10px;">▹ <strong>Mastercard:</strong> Cyber Analyst</li>
-                <li>▹ <strong>Deloitte:</strong> Incident Response</li>
-            </ul>
+            <h2 style="color: var(--white); margin-top: 0;">🛠️ Tactical Stack</h2>
+            <div class="tech-matrix">
+                <span class="tech-pill">Kali Linux</span> <span class="tech-pill">Wireshark</span>
+                <span class="tech-pill">Metasploit</span> <span class="tech-pill">Nmap</span>
+                <span class="tech-pill">SQL Injection</span> <span class="tech-pill">Python</span>
+                <span class="tech-pill">Burp Suite</span> <span class="tech-pill">Next.js</span>
+            </div>
+            <div style="margin-top: 30px;">
+                <h3 style="color: var(--white); font-size: 1rem;">🟦 Martial Arts</h3>
+                <span class="tech-pill" style="border-color: #3b82f6;">Taekwondo Blue Belt</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="color: var(--white); margin-top: 0;">🚀 Simulations Pro</h2>
+            <div style="font-size: 0.85rem;">
+                <div style="margin-bottom: 12px; border-left: 2px solid var(--blue); padding-left: 10px;">
+                    <strong>JPMorgan Chase</strong><br><small>Software Engineering Simulation</small>
+                </div>
+                <div style="margin-bottom: 12px; border-left: 2px solid var(--blue); padding-left: 10px;">
+                    <strong>Deloitte Australia</strong><br><small>Cyber Security Analyst</small>
+                </div>
+                <div style="border-left: 2px solid var(--blue); padding-left: 10px;">
+                    <strong>Mastercard</strong><br><small>Cyber Incident Response</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card span-2">
+            <h2 style="color: var(--white); margin-top: 0;">📜 Certification Hub</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; font-size: 0.8rem;">
+                <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                    <span style="color: var(--accent);">MARS 2026</span><br><strong>Google: Tools of the Trade</strong>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                    <span style="color: var(--accent);">JUIL 2025</span><br><strong>Ethical Hacking (LearnKartS)</strong>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                    <span style="color: var(--accent);">JUIN 2025</span><br><strong>EU Cyber Resilience Act (Linux Fnd)</strong>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                    <span style="color: var(--accent);">AVR 2025</span><br><strong>ISC2 Candidate</strong>
+                </div>
+            </div>
         </div>
     </div>
 
-    <footer style="margin-top: 80px; text-align: center; font-family: 'Fira Code', monospace; font-size: 0.7rem; opacity: 0.5;">
-        [ ENCRYPTION ENABLED ] - LAST_SYNC: 04-APR-2026
+    <footer style="margin-top: 60px; text-align: center; font-size: 0.7rem; opacity: 0.5; font-family: monospace;">
+        [ SECURE CONNECTION ESTABLISHED ] | LAST UPDATED: APRIL 2026
     </footer>
 </div>
 
 <script>
-    const queries = {
-        brute_force: "SELECT * FROM log_in_attempts WHERE login_time > '18:00:00' AND success = 0;",
-        geo: "SELECT * FROM log_in_attempts WHERE NOT country LIKE 'MEX%';"
+    const scans = {
+        brute: "SELECT * FROM log_in_attempts WHERE login_time > '18:00:00' AND success = 0;",
+        geo: "SELECT * FROM log_in_attempts WHERE NOT country LIKE 'MEX%';",
+        it: "SELECT * FROM employees WHERE NOT department = 'Information Technology';"
     };
 
-    function typeQuery(key) {
-        const text = queries[key];
-        const container = document.getElementById('typing-text');
-        container.innerHTML = "";
+    function runScan(key) {
+        const output = document.getElementById('output');
+        const text = scans[key];
+        output.innerHTML = "";
         let i = 0;
         
+        // Update active tab
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+
         function type() {
             if (i < text.length) {
-                container.innerHTML += text.charAt(i);
+                output.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(type, 30);
+                setTimeout(type, 20);
             }
         }
         type();
     }
 
-    // Initial type
-    window.onload = () => typeQuery('brute_force');
+    window.onload = () => runScan('brute');
 </script>
 
 </body>
