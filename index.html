@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel BAKAKA | Cybersecurity Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117; --card: #161b22; --border: #30363d;
+            --text: #c9d1d9; --accent: #238636; --blue: #58a6ff;
+        }
+        body {
+            background-color: var(--bg); color: var(--text);
+            font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Header & Bio */
+        header { border-bottom: 1px solid var(--border); padding-bottom: 40px; margin-bottom: 40px; }
+        h1 { font-size: 3rem; margin: 0; color: white; font-weight: 900; }
+        .badge { background: var(--accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        
+        /* Grid System */
+        .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        h2 { color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+        /* Terminal Style for SQL */
+        .terminal {
+            background: #000; border-radius: 8px; padding: 15px;
+            font-family: 'Fira Code', monospace; font-size: 0.9rem;
+            border-left: 4px solid var(--accent); position: relative;
+        }
+        .terminal::before { content: "SQL QUERY"; position: absolute; top: -10px; right: 10px; font-size: 0.7rem; color: var(--gray); background: var(--bg); padding: 0 5px; }
+        .keyword { color: #ff7b72; }
+        .string { color: #a5d6ff; }
+
+        /* Interactive Tabs */
+        .tab-buttons { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        button { 
+            background: transparent; border: 1px solid var(--border); color: var(--text);
+            padding: 8px 15px; border-radius: 6px; cursor: pointer; transition: 0.3s;
+        }
+        button.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+        /* Status Checkmarks */
+        .status-list { list-style: none; padding: 0; }
+        .status-list li::before { content: "▹ "; color: var(--blue); }
+        .done { color: var(--accent); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Emmanuel BAKAKA <span class="badge">L2 Cybersécurité</span></h1>
+        <p>🛡️ Analyste en sécurité & Développeur Full-stack | Objectif : <strong>EPITA Rennes</strong></p>
+        <div style="margin-top: 15px;">
+            <a href="https://www.linkedin.com/in/emmanuel-bakaka-4805a125a/" style="color: var(--blue);">LinkedIn</a> • 
+            <span>Dakar, Sénégal (Mobilité France 2026)</span>
+        </div>
+    </header>
+
+    <div class="grid">
+        <main>
+            <section class="card">
+                <h2>🔍 Analyse SQL Interactive</h2>
+                <p>En tant qu'analyste, j'enquête sur des incidents via SQL pour identifier des menaces. Cliquez sur les filtres ci-dessous pour voir mes méthodes d'investigation :</p>
+                
+                <div class="tab-buttons">
+                    <button onclick="showSql('after-hours')" id="btn-after-hours" class="active">Échecs après 18h</button>
+                    <button onclick="showSql('geo-filter')">Filtrage Hors-Mexique</button>
+                    <button onclick="showSql('marketing')">Ciblage Marketing (Est)</button>
+                </div>
+
+                <div id="sql-display" class="terminal">
+                    <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> log_in_attempts <br>
+                    <span class="keyword">WHERE</span> login_time > <span class="string">'18:00:00'</span> <span class="keyword">AND</span> success = 0;
+                </div>
+                <p id="sql-logic" style="font-size: 0.9rem; margin-top: 15px; color: var(--accent);">
+                    Logic: Identifie les échecs de connexion suspects hors horaires de bureau.
+                </p>
+            </section>
+
+            <section class="card">
+                <h2>🚀 Projets Techniques</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="text-align: left; border-bottom: 1px solid var(--border);">
+                        <th style="padding: 10px;">Projet</th>
+                        <th>Outils</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Gestion des Permissions Linux</td>
+                        <td><span class="badge" style="background:#444;">Bash, Chmod</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Analyse de Trafic Réseau</td>
+                        <td><span class="badge" style="background:#444;">Wireshark, Nmap</span></td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+
+        <aside>
+            <section class="card">
+                <h2>📜 Certifications</h2>
+                <ul class="status-list">
+                    <li class="done">Google Cybersecurity</li>
+                    <li>CompTIA Security+ (Fév. 2027)</li>
+                    <li>CompTIA PenTest+ (Fin 2027)</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h2>🛠️ Toolbox</h2>
+                <p><strong>OS:</strong> Kali Linux, Ubuntu</p>
+                <p><strong>Dev:</strong> Python, SQL, React/Next.js</p>
+                <p><strong>Sport:</strong> Taekwondo 🟦 (Blue Belt)</p>
+            </aside>
+        </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; font-size: 0.8rem; color: var(--gray);">
+        Dernière mise à jour : Mars 2026 | Portfolio interactif d'Emmanuel BAKAKA
+    </footer>
+</div>
+
+<script>
+    const queries = {
+        'after-hours': {
+            sql: "<span class='keyword'>SELECT</span> * <span class='keyword'>FROM</span> log_in_attempts <br><span class='keyword'>WHERE</span> login_time > <span class='string'>'18:00:00'</span> <span class='keyword'>AND</span> success = 0;",
+            logic: "Logic: Identifie les échecs de connexion suspects après les heures de bureau."
+        },
+        'geo-filter': {
+            sql: "<span class='keyword'>SELECT</span> * <span class='keyword'>FROM</span> log_in_attempts <br><span class='keyword'>WHERE NOT</span> country <span class='keyword'>LIKE</span> <span class='string'>'MEX%'</span>;",
+            logic: "Logic: Isole les connexions étrangères en excluant précisément le Mexique."
+        },
+        'marketing': {
+            sql: "<span class='keyword'>SELECT</span> * <span class='keyword'>FROM</span> employees <br><span class='keyword'>WHERE</span> department = <span class='string'>'Marketing'</span> <span class='keyword'>AND</span> office <span class='keyword'>LIKE</span> <span class='string'>'East%'</span>;",
+            logic: "Logic: Cible les actifs du département Marketing situés dans le bâtiment Est."
+        }
+    };
+
+    function showSql(key) {
+        document.getElementById('sql-display').innerHTML = queries[key].sql;
+        document.getElementById('sql-logic').innerText = queries[key].logic;
+        
+        document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
