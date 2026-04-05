@@ -40,6 +40,9 @@
 
         .tech-pill { background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border); color: var(--white); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-family: 'Fira Code', monospace; margin: 2px; display: inline-block; }
         .status-badge { font-size: 0.6rem; padding: 2px 8px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: var(--accent); border: 1px solid var(--accent); font-weight: bold; text-transform: uppercase; }
+        
+        .grid-skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px; }
+        .skill-cat h4 { color: var(--white); font-size: 0.8rem; margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
 
         @media (max-width: 900px) { .bento { grid-template-columns: 1fr; } .span-2, .span-3 { grid-column: span 1; } }
     </style>
@@ -52,7 +55,7 @@
         <div class="tagline">> root-legacy@Citadel:!# _</div>
         <p style="max-width: 850px; font-size: 0.95rem; line-height: 1.6;">
             <strong>Analyste Cyber & Pentester</strong> (L2). Spécialiste en audit d'infrastructure et solutions réseau sécurisées. 
-            Expert en <strong>Ethical Hacking</strong> et diplômé des simulations <strong>Mastercard Cybersecurity</strong>.
+            Expert en <strong>Ethical Hacking</strong> et certifié par <strong>Mastercard</strong> & <strong>Google</strong>.
         </p>
     </header>
 
@@ -71,32 +74,56 @@
         </div>
 
         <div class="card">
-            <h3 style="color: var(--white); margin-top: 0;">💼 Experience : ESIC Technology</h3>
+            <h3 style="color: var(--white); margin-top: 0;">💼 Expérience Pro</h3>
             <p style="font-size: 0.8rem; line-height: 1.5;">
-                <strong>Ingénieur Junior & Pentester</strong> (2025 - Présent)<br><br>
-                • Audits de sécurité et analyse de vulnérabilités.<br>
-                • Segmentation réseau (VLANs) et sécurisation d'infrastructures.<br>
-                • Surveillance SIEM et réponse aux incidents.
+                <strong>ESICTechnology</strong> (2025 - Janvier 2026)<br>
+                <em>Pentester & Ingénieur Junior</em><br><br>
+                • Audits de sécurité (interne/externe)<br>
+                • Segmentation réseaux via VLANs sécurisés<br>
+                • Surveillance SIEM & gestion d'incidents
             </p>
         </div>
 
-        <div class="card">
-            <h3 style="color: var(--white); margin-top: 0;">⚡ Spécialisation Ethical Hacking</h3>
-            <div class="tech-matrix">
-                <span class="tech-pill">Analyse des risques</span>
-                <span class="tech-pill">Test d'intrusion</span>
-                <span class="tech-pill">Gestion des menaces</span>
-                <span class="tech-pill">Sécurité des réseaux</span>
-                <span class="tech-pill">Compétences analytiques</span>
+        <div class="card span-3">
+            <h3 style="color: var(--white); margin-top: 0;">🛠️ Expert Matrix & Skills</h3>
+            <div class="grid-skills">
+                <div class="skill-cat">
+                    <h4>OFFENSIVE SECURITY</h4>
+                    <span class="tech-pill">Ethical Hacking</span>
+                    <span class="tech-pill">Pentesting</span>
+                    <span class="tech-pill">Burp Suite</span>
+                    <span class="tech-pill">Metasploit</span>
+                </div>
+                <div class="skill-cat">
+                    <h4>DEFENSIVE OPS</h4>
+                    <span class="tech-pill">Incident Response</span>
+                    <span class="tech-pill">SIEM Monitoring</span>
+                    <span class="tech-pill">Network Security</span>
+                    <span class="tech-pill">VLAN Segmentation</span>
+                </div>
+                <div class="skill-cat">
+                    <h4>GOVERNANCE</h4>
+                    <span class="tech-pill">Analyse des risques</span>
+                    <span class="tech-pill">Gestion des menaces</span>
+                    <span class="tech-pill">Threat Intel</span>
+                    <span class="tech-pill">ISO 27001 Basic</span>
+                </div>
+                <div class="skill-cat">
+                    <h4>SEC-DEVELOPMENT</h4>
+                    <span class="tech-pill">Python (Security)</span>
+                    <span class="tech-pill">SQL Hardening</span>
+                    <span class="tech-pill">Linux Foundations</span>
+                    <span class="tech-pill">Vibe Coding</span>
+                </div>
             </div>
         </div>
 
         <div class="card">
-            <h3 style="color: var(--white); margin-top: 0;">🏦 Professional Simulations</h3>
+            <h3 style="color: var(--white); margin-top: 0;">🏦 Professional Sims</h3>
             <div style="font-size: 0.85rem;">
-                <strong>Mastercard :</strong> Simulation d'analyste en cybersécurité (Réponse aux incidents).<br><br>
-                <strong>Cyber War Games :</strong> Participation à l'édition 2026 (Dakar).<br><br>
-                <strong>SmartRH :</strong> ERP sécurisé (Projet personnel).
+                <strong>Mastercard :</strong> Simulation Incident Response Analyst.<br><br>
+                <strong>Cyber War Games :</strong> Participant 2026 (Dakar).<br><br>
+                <strong>SmartRH :</strong> ERP avec architecture RBAC.
             </div>
         </div>
 
@@ -106,6 +133,7 @@
                 <div style="background: rgba(16, 185, 129, 0.05); padding: 12px; border-radius: 10px; border: 1px solid var(--accent);">
                     <span class="status-badge">Target : 29/04/2026</span><br>
                     <strong>ISC2 : CC</strong><br>
+                    <span class="status-badge" style="margin-top:5px; display:inline-block;">Target : 2027</span><br>
                     <strong>eJPT v2</strong>
                 </div>
                 <div style="background: rgba(251, 191, 36, 0.05); padding: 12px; border-radius: 10px; border: 1px solid var(--gold);">
@@ -116,16 +144,16 @@
             </div>
         </div>
 
-        <div class="card span-3" style="border-top: 3px solid var(--blue);">
-            <h3 style="color: var(--white); margin-top: 0;">🎯 Stratégie CyberSup @ EPITA</h3>
+        <div class="card span-3" style="border-top: 3px solid var(--blue); background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.9), rgba(59, 130, 246, 0.05));">
+            <h3 style="color: var(--white); margin-top: 0;">🎯 Stratégie CyberSup Paris</h3>
             <p style="font-size: 0.9rem; line-height: 1.6;">
-                Je vise l'excellence via les académies partenaires (AWS, Cisco, Palo Alto) et l'exploitation du <strong>Framework Laptop modulaire</strong> pour mes labs <strong>RootMe Pro</strong>.
+                Je vise l'excellence via les académies partenaires (AWS, Cisco, Palo Alto) et l'exploitation du <strong>Framework Laptop modulaire</strong> pour mes labs <strong>RootMe Pro</strong>. Mon objectif est de valider les titres CCNA, AWS Cloud et SOC Analyst.
             </p>
             <div class="tech-matrix">
-                <span class="tech-pill">Cisco CCNA</span>
+                <span class="tech-pill">Cisco Networking Academy</span>
                 <span class="tech-pill">AWS Cloud Security</span>
                 <span class="tech-pill">SOC Analyst Specialist</span>
-                <span class="tech-pill">Pentesting Avancé</span>
+                <span class="tech-pill">Framework Laptop Ops</span>
             </div>
         </div>
     </div>
